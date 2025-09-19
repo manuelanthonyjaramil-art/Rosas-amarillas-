@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carta Especial 🌸</title>
+<style>
+    /* Fondo general con degradado y flores */
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, #ffe4e1, #fff0f5);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow: hidden;
+    }
+
+    /* Contenedor de la carta */
+    .carta-container {
+        perspective: 1500px;
+        cursor: pointer;
+        width: 350px;
+        height: 220px;
+        position: relative;
+    }
+
+    /* Carta */
+    .carta {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 1s ease-in-out;
+    }
+
+    /* Partes de la carta */
+    .carta-front, .carta-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        backface-visibility: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    /* Frente de la carta */
+    .carta-front {
+        background: #ffccd5;
+        font-size: 18px;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px;
+    }
+
+    /* Parte trasera / papel con mensaje */
+    .carta-back {
+        background: #fff;
+        transform: rotateY(180deg);
+        padding: 20px;
+        box-sizing: border-box;
+        border: 3px solid #ffb6c1;
+        border-radius: 15px;
+        font-family: 'Lucida Handwriting', 'Cursive', 'Segoe Script';
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+        position: relative;
+    }
+
+    /* Decoración borde de carta estilo profesional */
+    .carta-back::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        border: 2px dashed #ffc0cb;
+        border-radius: 12px;
+        pointer-events: none;
+    }
+
+    /* Carta abierta */
+    .carta.open {
+        transform: rotateY(180deg);
+    }
+
+    /* Flores tipo Sakura flotando */
+    .flores {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-image: url('https://i.imgur.com/8f4vPkh.png');
+        background-size: 60px 60px;
+        pointer-events: none;
+        z-index: -1;
+        animation: float 15s linear infinite;
+    }
+
+    @keyframes float {
+        0% {background-position: 0 0;}
+        50% {background-position: 300px 200px;}
+        100% {background-position: 0 0;}
+    }
+</style>
+</head>
+<body>
+
+<div class="carta-container" onclick="abrirCarta()">
+    <div class="carta">
+        <div class="carta-front">
+            📬 Haz clic aquí para abrir la carta
+        </div>
+        <div class="carta-back">
+            💌 Mi amor,<br><br>
+            Quiero decirte que te amo un montón y que agradezco cada momento que compartimos.  
+            Tu existencia hace mi vida más hermosa y cada día contigo es un regalo.<br><br>
+            Gracias por ser tú. Siempre tuyo/a. 🌸❤️
+        </div>
+    </div>
+    <div class="flores"></div>
+</div>
+
+<script>
+function abrirCarta() {
+    document.querySelector('.carta').classList.toggle('open');
+}
+</script>
+</body>
+</html>
